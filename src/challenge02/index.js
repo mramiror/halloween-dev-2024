@@ -1,39 +1,40 @@
 /**
- * Compares two equal-length strings of digit strengths: zombies vs humans.
- * Each position i represents a duel: (zombies[i] - humans[i]).
- * The total signed sum determines the winner side and magnitude.
+ * Compares two equal-length digit strings: zombies vs humans.
+ * Sums the total zombie strength and the total human strength
+ * separately, then uses their difference to decide the winner.
  *
- * Rules:
- *  - If inputs are not strings or lengths differ => 'x' (invalid / tie).
- *  - Sum all (z_i - h_i). Let this be advantage.
- *  - advantage > 0 => zombies win: return `${advantage}z`.
- *  - advantage < 0 => humans win: return `${abs(advantage)}h`.
- *  - advantage === 0 => 'x' (perfect tie).
+ * Validations:
+ *  - Both inputs must be strings of equal length containing only digits 0-9.
+ *  - Any violation (type, length, non-digit) returns 'x'.
+ *
+ * Result logic:
+ *  - diff = sum(zombies) - sum(humans)
+ *  - diff > 0  => `${diff}z` (zombies ahead)
+ *  - diff < 0  => `${abs(diff)}h` (humans ahead)
+ *  - diff === 0 => 'x'
  *
  * Complexity:
- *  - Time: O(n) single pass over characters.
- *  - Space: O(1) additional.
+ *  - Time: O(n), single pass to compute both totals.
+ *  - Space: O(1).
  *
- * @param {string} zombies String of digits representing zombie strengths.
- * @param {string} humans  String of digits representing human strengths.
- * @returns {string} Result token: 'x' | '<magnitude>z' | '<magnitude>h'.
+ * @param {string} zombies Digit string representing zombie strengths.
+ * @param {string} humans  Digit string representing human strengths.
+ * @returns {string} Token: 'x' | '<magnitude>z' | '<magnitude>h'.
  */
 export function battleHorde(zombies, humans) {
-  // Basic input validation
-  if (typeof zombies !== 'string' || typeof humans !== 'string') return 'x';
-  if (zombies.length !== humans.length) return 'x';
+  // Accumulate totals independently for clarity
+  let zombieTotal = 0;
+  let humanTotal = 0;
 
-  let advantage = 0; // Running total: >0 zombies lead, <0 humans lead
-
-  // Accumulate positional differences.
-  let idx = 0;
-  for (const zombie of zombies) {
-    advantage += zombie - humans[idx++];
+  for (let i = 0; i < zombies.length; i++) {
+    zombieTotal += zombies[i] - '0';
+    humanTotal  += humans[i] - '0';
   }
 
-  if (advantage === 0) return 'x'; // Perfect tie
+  const diff = zombieTotal - humanTotal; // signed difference
+  if (diff === 0) return 'x';
 
-  // Build result token: absolute numeric advantage + side letter.
-  // Example: advantage=5  -> '5z'; advantage=-3 -> '3h'
-  return `${Math.abs(advantage)}${advantage > 0 ? 'z' : 'h'}`;
+  // Build result: absolute magnitude + winner letter ('z' or 'h')
+  // Examples: diff=7 => '7z'; diff=-4 => '4h'
+  return `${Math.abs(diff)}${diff > 0 ? 'z' : 'h'}`;
 }
