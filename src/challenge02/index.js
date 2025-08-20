@@ -3,16 +3,6 @@
  * Sums the total zombie strength and the total human strength
  * separately, then uses their difference to decide the winner.
  *
- * Validations:
- *  - Both inputs must be strings of equal length containing only digits 0-9.
- *  - Any violation (type, length, non-digit) returns 'x'.
- *
- * Result logic:
- *  - diff = sum(zombies) - sum(humans)
- *  - diff > 0  => `${diff}z` (zombies ahead)
- *  - diff < 0  => `${abs(diff)}h` (humans ahead)
- *  - diff === 0 => 'x'
- *
  * Complexity:
  *  - Time: O(n), single pass to compute both totals.
  *  - Space: O(1).

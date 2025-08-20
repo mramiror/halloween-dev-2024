@@ -3,22 +3,6 @@
  * to the bottom‑right (R-1,C-1) of a rectangular grid of danger values,
  * moving only RIGHT or DOWN.
  *
- * Dynamic Programming relation:
- *   dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
- *
- * Space optimization:
- *   The 2D table is compressed into a single row array (dp[col]) because each
- *   state depends only on the current row (left) and the previous row (top).
- *   During iteration dp[col] still holds the previous-row value (top), while
- *   dp[col - 1] already represents the current-row value (left).
- *
- * Example:
- *   Grid:
- *     1 3 1
- *     1 5 1
- *     4 2 1
- *   Minimal path (1→3→1→1→1) sum = 7.
- *
  * Complexity:
  *   Time:  O(rows * cols)
  *   Space: O(cols)

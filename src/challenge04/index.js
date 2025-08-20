@@ -6,11 +6,6 @@
  *  - Trailing '$' : if present, forces the match to end there (exact length match).
  *  - All other characters are treated literally (no other metacharacters expected in this kata scope).
  *
- * Behavior:
- *  - Anchor is always forced at the start ('^').
- *  - End anchor ('$') only added if the original pattern ended with '$'.
- *  - Case-insensitive match; original suspect casing preserved in output.
- *
  * @param {string} whisper Pattern with optional '~' and optional trailing '$'.
  * @param {string[]} suspects Candidate names to test.
  * @returns {string} Comma-separated matching names ('' if none).
