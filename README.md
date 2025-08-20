@@ -165,13 +165,13 @@ To run this project on your locally, please follow the following steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/mramiror/halloween_dev_2024.git
+git clone https://github.com/mramiror/halloween-dev-2024.git
 ```
 
 2. Go to the project directory:
 
 ```bash
-cd halloween_dev_2024
+cd halloween-dev-2024
 ```
 
 3. Install dependencies:
