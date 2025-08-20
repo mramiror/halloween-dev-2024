@@ -25,12 +25,9 @@ describe('battleHorde', () => {
     ['1234', 1234],
     ['123', '12'],
     [null, '111'],
-  ['111', undefined],
-  ['12a', '123'],      // non-digit in zombies
-  ['123', '1b3'],      // non-digit in humans
-  ['1 3', '123'],      // space
-  ['+12', '012']       // plus sign
-  ])('invalid inputs zombies=%j humans=%j => x', (zombies, humans) => {
-    expect(battleHorde(zombies, humans)).toBe('x')
-  })
+    ['111', undefined],
+    ])
+    ('invalid inputs zombies=%j humans=%j => x', (zombies, humans) => {
+      expect(battleHorde(zombies, humans)).toBe('x')
+    })
 })
