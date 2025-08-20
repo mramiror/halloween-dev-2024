@@ -153,11 +153,18 @@ Each challenge includes a problem statement, solution, and unit tests.
 ## 🛠️ Installation and Execution
 
 ### Prerequisites
-**Node.js ≥ 18** and **npm** (or **pnpm**/**yarn**). Check your version with:
-  ```bash
-  node -v
-  ```
-Installing dependencies is required to run the tests.
+**Node.js >= 18.19.0** (also tested on Node 22). Check your version:
+```bash
+node -v
+```
+If you use **nvm** you can align your local version with:
+```bash
+nvm use
+```
+The `.nvmrc` file pins a compatible LTS version. You can also verify compatibility:
+```bash
+npm run check:node
+```
 
 ### Steps
 To run this project on your locally, please follow the following steps:
@@ -181,38 +188,46 @@ npm install
 # or: pnpm install / yarn install
 ```
 
-4. Run all tests with:
-
+4. Run all tests (Jest + ESM):
 ```bash
-npm run challenges
+npm test
 ```
-
-Or run the tests for each challenge with:
-
+Watch mode (re-runs on file changes):
+```bash
+npm run test:watch
+```
+Run only challenge 1:
 ```bash
 npm run challenge1
-npm run challenge2
-npm run challenge3
-npm run challenge4
-npm run challenge5
+```
+Verify Node version:
+```bash
+npm run check:node
+```
+Coverage (optional – not added as a script yet):
+```bash
+npm test -- --coverage
+```
+If you want to add more challenges, run a specific one like:
+```bash
+npm test -- src/challengeXX
 ```
 
 ## 📦 Scripts
 
-Make sure you have something similar in your package.json:
-
+Current excerpt from `package.json`:
 ```json
 {
   "scripts": {
-    "challenges": "jest",
-    "challenge1": "jest src/challenge-01",
-    "challenge2": "jest src/challenge-02",
-    "challenge3": "jest src/challenge-03",
-    "challenge4": "jest src/challenge-04",
-    "challenge5": "jest src/challenge-05"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "npm test -- --watch",
+    "challenge1": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/challenge01",
+    "check:node": "node scripts/check-node-version.js"
   }
 }
 ```
+
+Note: The `--experimental-vm-modules` flag allows native ESM with Jest 29 without transpiling. If you migrate to CommonJS or upgrade to a future Jest version with full ESM support, you can remove it.
 
 ## 📝 License
 
