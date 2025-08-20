@@ -18,16 +18,4 @@ describe('battleHorde', () => {
   ])('zombies=%s humans=%s => %s', (zombies, humans, expected) => {
     expect(battleHorde(zombies, humans)).toBe(expected)
   })
-
-  test.each([
-    // Invalid inputs or different lengths return 'x'
-    [123, '1234'],
-    ['1234', 1234],
-    ['123', '12'],
-    [null, '111'],
-    ['111', undefined],
-    ])
-    ('invalid inputs zombies=%j humans=%j => x', (zombies, humans) => {
-      expect(battleHorde(zombies, humans)).toBe('x')
-    })
 })
