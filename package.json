@@ -1,0 +1,21 @@
+{
+  "name": "halloween-dev-2024",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Halloween Dev 2024 challenges solutions",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "npm test -- --watch",
+    "challenge1": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/challenge01",
+    "check:node": "node scripts/check-node-version.js"
+  },
+  "devDependencies": {
+  "jest": "^29.7.0",
+  "semver": "^7.6.3"
+  },
+  "engines": {
+    "node": ">=18.19.0 <23"
+  },
+  "license": "MIT"
+}
