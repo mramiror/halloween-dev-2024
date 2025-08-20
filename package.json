@@ -8,6 +8,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "npm test -- --watch",
     "challenge1": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/challenge01",
+    "challenge2": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/challenge02",
     "check:node": "node scripts/check-node-version.js"
   },
   "devDependencies": {
