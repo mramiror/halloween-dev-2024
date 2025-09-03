@@ -228,7 +228,3 @@ Current excerpt from `package.json`:
 ```
 
 Note: The `--experimental-vm-modules` flag allows native ESM with Jest 29 without transpiling. If you migrate to CommonJS or upgrade to a future Jest version with full ESM support, you can remove it.
-
-## 📝 License
-
-This project is licensed under the MIT License — see LICENSE for details.
